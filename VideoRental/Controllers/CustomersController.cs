@@ -1,24 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VideoRental.Context;
 using VideoRental.Models;
 
 namespace Vidly.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly VideoRentalDbContext _context;
+
+        public CustomersController()
+        {
+            _context = new VideoRentalDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
         // GET: Customers
         public ActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
 
         public ActionResult Details(int id)
-        {
-            var customer = GetCustomers().SingleOrDefault(x => x.Id == id);
+        {            
+            var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(x => x.Id == id);
 
             if (customer == null)
                 return HttpNotFound();
@@ -26,13 +39,5 @@ namespace Vidly.Controllers
             return View(customer);
         }
 
-        private IEnumerable<Customer> GetCustomers()
-        {
-            return new List<Customer>
-            {
-                new Customer { Id = 1, Name = "Franco Redoni"},
-                new Customer {Id = 2, Name = "Gonzalo Bosco"}                
-            };
-        }
     }
 }

@@ -14,15 +14,18 @@ namespace VideoRental.Context
     {
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
+        public DbSet<MembershipType> MembershipTypes { get; set; }
+        public DbSet<Genre> Genres { get; set; }
         public VideoRentalDbContext()
             : base("VideoRentalConnectionString", throwIfV1Schema: false)
         {
-            
+
         }
 
         public static VideoRentalDbContext Create()
         {
             return new VideoRentalDbContext();
         }
+        
     }
 }
