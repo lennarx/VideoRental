@@ -12,8 +12,9 @@ namespace VideoRental.Models
         public int Id { get; set; }
         [Required, MaxLength(100)]
         public string Name { get; set; }
+        [Required]
+        public byte MembershipTypeId { get; set; }
         public MembershipType MembershipType { get; set; }        
-        public int MemberShipTypeId { get; set; }
         public DateTime BirthDate { get; set; }
         
     }

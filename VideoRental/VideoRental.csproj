@@ -208,6 +208,14 @@
     <Compile Include="Migrations\202003121958202_MovieDetails.Designer.cs">
       <DependentUpon>202003121958202_MovieDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003122311576_CustomerNoFK.cs" />
+    <Compile Include="Migrations\202003122311576_CustomerNoFK.Designer.cs">
+      <DependentUpon>202003122311576_CustomerNoFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003122314464_MembershipType.cs" />
+    <Compile Include="Migrations\202003122314464_MembershipType.Designer.cs">
+      <DependentUpon>202003122314464_MembershipType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -220,6 +228,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -320,6 +329,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003121958202_MovieDetails.resx">
       <DependentUpon>202003121958202_MovieDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003122311576_CustomerNoFK.resx">
+      <DependentUpon>202003122311576_CustomerNoFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003122314464_MembershipType.resx">
+      <DependentUpon>202003122314464_MembershipType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
