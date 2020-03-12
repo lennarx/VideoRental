@@ -22,6 +22,12 @@ namespace VideoRental.Context
 
         }
 
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {        
+            
+            base.OnModelCreating(modelBuilder);
+        }
+
         public static VideoRentalDbContext Create()
         {
             return new VideoRentalDbContext();

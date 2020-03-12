@@ -17,16 +17,22 @@ namespace Vidly.Controllers
         {
             _context = new VideoRentalDbContext();
         }
-        public ViewResult Index()
+        public ActionResult Index()
         {
             var movies = _context.Movies.Include(x => x.Genre).ToList();
+
+            if (movies == null || movies.Count == 0)
+                return HttpNotFound();
 
             return View(movies);
         }   
         
-        public ActionResult GetMovie(int id)
+        public ActionResult Details(int id)
         {
-            var movie = _context.Movies.Include(x => x.Genre).SingleOrDefault(x => x.MovieId == id);
+            var movie = _context.Movies.Include(x => x.Genre).FirstOrDefault(x => x.MovieId == id);
+
+            if (movie == null)
+                return HttpNotFound();
 
             return View(movie);
         }
