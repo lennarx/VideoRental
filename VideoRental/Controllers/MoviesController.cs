@@ -37,7 +37,7 @@ namespace Vidly.Controllers
                 Genres = _context.Genres.AsNoTracking().ToList()
             };
 
-            return View("MovieForm", viewModel);
+            return View("MoviesForm", viewModel);
         }
 
         public ActionResult Edit(int id)
@@ -49,7 +49,7 @@ namespace Vidly.Controllers
                 Genres = _context.Genres.AsNoTracking().ToList()
             };
 
-            return View("MovieForm", viewModel);
+            return View("MoviesForm", viewModel);
         }
 
         [HttpPost]
