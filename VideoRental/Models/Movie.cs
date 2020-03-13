@@ -10,10 +10,16 @@ namespace VideoRental.Models
     {
         public int MovieId { get; set; }
         public string Name { get; set; }
+        [Display(Name="Added on Date:")]
         public DateTime DateAdded { get; set; }        
+        [Display(Name="Released on Date:")]
         public DateTime ReleaseDate { get; set; }
-        public Genre Genre { get; set; }        
+        [Display(Name="Genre")]
+        [Required]
+        public int GenreId { get; set; }
+        public Genre Genre { get; set; }
         [Range(1, 20)]
+        [Display(Name="Stock")]
         public byte NumberInStock { get; set; }
     }
 }

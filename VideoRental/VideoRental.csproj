@@ -216,6 +216,14 @@
     <Compile Include="Migrations\202003122314464_MembershipType.Designer.cs">
       <DependentUpon>202003122314464_MembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003130031308_CustomerNewsLetter.cs" />
+    <Compile Include="Migrations\202003130031308_CustomerNewsLetter.Designer.cs">
+      <DependentUpon>202003130031308_CustomerNewsLetter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003130253059_MovieGenreFK.cs" />
+    <Compile Include="Migrations\202003130253059_MovieGenreFK.Designer.cs">
+      <DependentUpon>202003130253059_MovieGenreFK.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -226,6 +234,8 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\MovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -288,6 +298,8 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Movies\Index.cshtml" />
     <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MoviesForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -335,6 +347,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003122314464_MembershipType.resx">
       <DependentUpon>202003122314464_MembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003130031308_CustomerNewsLetter.resx">
+      <DependentUpon>202003130031308_CustomerNewsLetter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003130253059_MovieGenreFK.resx">
+      <DependentUpon>202003130253059_MovieGenreFK.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
