@@ -10,18 +10,18 @@ using VideoRental.Dtos;
 using VideoRental.Models;
 
 namespace VideoRental.Controllers.Api
-{
+{    
     public class CustomersController : ApiController
     {
         private readonly VideoRentalDbContext _context;
 
+        
         public CustomersController()
         {
             _context = new VideoRentalDbContext();
         }
 
         [HttpGet]
-        [Route("")]
         public IHttpActionResult Get()
         {
             var customers = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
@@ -31,8 +31,7 @@ namespace VideoRental.Controllers.Api
 
             return Ok(customers);
         }
-
-        [Route("{id}")]
+        
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
