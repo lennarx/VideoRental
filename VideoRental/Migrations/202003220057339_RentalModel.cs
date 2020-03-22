@@ -1,0 +1,37 @@
+namespace VideoRental.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class RentalModel : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.Rentals",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CustomerId = c.Int(nullable: false),
+                        DateRented = c.DateTime(nullable: false),
+                        DateReturn = c.DateTime(nullable: false),
+                        Movie_MovieId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .ForeignKey("dbo.Movies", t => t.Movie_MovieId, cascadeDelete: true)
+                .Index(t => t.CustomerId)
+                .Index(t => t.Movie_MovieId);
+            
+        }
+        
+        public override void Down()
+        {
+            DropForeignKey("dbo.Rentals", "Movie_MovieId", "dbo.Movies");
+            DropForeignKey("dbo.Rentals", "CustomerId", "dbo.Customers");
+            DropIndex("dbo.Rentals", new[] { "Movie_MovieId" });
+            DropIndex("dbo.Rentals", new[] { "CustomerId" });
+            DropTable("dbo.Rentals");
+        }
+    }
+}

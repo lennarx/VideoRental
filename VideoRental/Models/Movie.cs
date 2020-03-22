@@ -21,5 +21,6 @@ namespace VideoRental.Models
         [Range(1, 20)]
         [Display(Name="Stock")]
         public byte NumberInStock { get; set; }
+        public byte MoviesAvailables { get; set; }
     }
 }

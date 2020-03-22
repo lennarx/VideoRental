@@ -20,8 +20,6 @@ namespace VideoRental.Controllers.Api
             _context = new VideoRentalDbContext();
         }
 
-        [HttpGet]   
-        [Route("")]
         public IHttpActionResult Get()
         {
             var movies =_context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>);
@@ -31,9 +29,7 @@ namespace VideoRental.Controllers.Api
 
             return Ok(movies);
         }
-
-        [Route("{id}")]
-        [HttpGet]
+        
         public IHttpActionResult Get(int id)
         {
             var movie = _context.Movies.FirstOrDefault(x => x.MovieId == id);

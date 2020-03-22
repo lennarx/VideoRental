@@ -67,7 +67,8 @@ namespace Vidly.Controllers
                 movieToInsert.GenreId = movie.GenreId;
                 movieToInsert.DateAdded = movie.DateAdded;
                 movieToInsert.ReleaseDate = movie.ReleaseDate;
-                movieToInsert.NumberInStock = movie.NumberInStock;                
+                movieToInsert.NumberInStock = movie.NumberInStock;
+                movieToInsert.MoviesAvailables = movie.NumberInStock;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Movies");

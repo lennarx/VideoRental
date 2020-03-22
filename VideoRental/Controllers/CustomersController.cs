@@ -70,7 +70,7 @@ namespace Vidly.Controllers
         }
 
         public ActionResult Edit(int id)
-        {
+        {            
             var customerViewModel = new CustomerViewModel
             {
                 PageTitle = "Edit Customer",

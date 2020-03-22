@@ -186,6 +186,7 @@
     <Compile Include="App_Start\MappingProfile.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Context\VideoRentalDbContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Api\CustomersController.cs" />
@@ -194,7 +195,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Controllers\Validators\MoviesValidator.cs" />
+    <Compile Include="Controllers\Validators\RentalValidator.cs" />
     <Compile Include="Dtos\CustomerDto.cs" />
     <Compile Include="Dtos\MovieDto.cs" />
     <Compile Include="Global.asax.cs">
@@ -248,6 +251,18 @@
     <Compile Include="Migrations\202003130253059_MovieGenreFK.Designer.cs">
       <DependentUpon>202003130253059_MovieGenreFK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003212332201_AddAgeToRegister.cs" />
+    <Compile Include="Migrations\202003212332201_AddAgeToRegister.Designer.cs">
+      <DependentUpon>202003212332201_AddAgeToRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003220057339_RentalModel.cs" />
+    <Compile Include="Migrations\202003220057339_RentalModel.Designer.cs">
+      <DependentUpon>202003220057339_RentalModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003220157558_MovieAvailability.cs" />
+    <Compile Include="Migrations\202003220157558_MovieAvailability.Designer.cs">
+      <DependentUpon>202003220157558_MovieAvailability.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -256,10 +271,12 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\Rental.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\MovieViewModel.cs" />
+    <Compile Include="ViewModels\NewRentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
@@ -267,10 +284,13 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bloodhound.js" />
+    <Content Include="Scripts\bloodhound.min.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -286,6 +306,10 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\typeahead.bundle.js" />
+    <Content Include="Scripts\typeahead.bundle.min.js" />
+    <Content Include="Scripts\typeahead.jquery.js" />
+    <Content Include="Scripts\typeahead.jquery.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -326,6 +350,8 @@
     <Content Include="Views\Movies\Details.cshtml" />
     <Content Include="Views\Customers\CustomerForm.cshtml" />
     <Content Include="Views\Movies\MoviesForm.cshtml" />
+    <Content Include="Views\Rentals\NewRental.cshtml" />
+    <Content Include="Views\Rentals\ErrorView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -379,6 +405,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003130253059_MovieGenreFK.resx">
       <DependentUpon>202003130253059_MovieGenreFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003212332201_AddAgeToRegister.resx">
+      <DependentUpon>202003212332201_AddAgeToRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003220057339_RentalModel.resx">
+      <DependentUpon>202003220057339_RentalModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003220157558_MovieAvailability.resx">
+      <DependentUpon>202003220157558_MovieAvailability.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

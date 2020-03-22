@@ -21,7 +21,7 @@ namespace VideoRental.Controllers.Api
             _context = new VideoRentalDbContext();
         }
 
-        [HttpGet]
+        
         public IHttpActionResult Get()
         {
             var customers = _context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>);
@@ -32,7 +32,7 @@ namespace VideoRental.Controllers.Api
             return Ok(customers);
         }
         
-        [HttpGet]
+        
         public IHttpActionResult Get(int id)
         {
             var customer = _context.Customers.FirstOrDefault(x => x.Id == id);
