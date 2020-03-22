@@ -24,7 +24,7 @@ namespace Vidly.Controllers
             _context.Dispose();
         }
         //VaryByParam permite tener una página distinta por cada parámetro. Si querés incluir una página por c/parámetro, ="*"
-        //[OutputCache(Duration = 10, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam="MembershipType")]
+        //[OutputCache(Duration = 10, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam="MembershipType", NoStore= true)]
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c => c.MembershipType).OrderBy(x => x.Id).Take(10).ToList();
@@ -46,7 +46,19 @@ namespace Vidly.Controllers
         [HttpPost]
         public ActionResult Save(Customer customer)
         {
-            if(customer.Id == 0)
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new CustomerViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+
+                return View("CustomerForm", viewModel);
+            }
+
+
+            if (customer.Id == 0)
             {
                 var customerToCreate = customer;
                 _context.Customers.Add(customerToCreate);                
