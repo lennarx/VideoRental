@@ -23,7 +23,8 @@ namespace Vidly.Controllers
         {
             _context.Dispose();
         }
-        // GET: Customers
+        //VaryByParam permite tener una página distinta por cada parámetro. Si querés incluir una página por c/parámetro, ="*"
+        //[OutputCache(Duration = 10, Location = System.Web.UI.OutputCacheLocation.Server, VaryByParam="MembershipType")]
         public ActionResult Index()
         {
             var customers = _context.Customers.Include(c => c.MembershipType).OrderBy(x => x.Id).Take(10).ToList();
